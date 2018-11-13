@@ -1,4 +1,4 @@
-package jutil;
+package com.createarttechnology.jutil;
 
 import java.lang.reflect.Method;
 import java.util.Date;

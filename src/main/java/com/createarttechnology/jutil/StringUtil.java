@@ -1,4 +1,4 @@
-package jutil;
+package com.createarttechnology.jutil;
 
 /**
  * Created by lixuhui on 2018/2/6.

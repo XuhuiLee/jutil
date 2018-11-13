@@ -1,4 +1,4 @@
-package jutil;
+package com.createarttechnology.jutil;
 
 import com.google.common.collect.Lists;
 

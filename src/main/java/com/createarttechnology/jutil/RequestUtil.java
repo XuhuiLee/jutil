@@ -1,4 +1,4 @@
-package jutil;
+package com.createarttechnology.jutil;
 
 import javax.servlet.http.HttpServletRequest;
 
