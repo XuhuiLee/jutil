@@ -61,4 +61,12 @@ public class RequestUtil {
         return StringUtil.convertBoolean(value, defaultValue);
     }
 
+    public static String getIP(HttpServletRequest request) {
+        String value = request.getHeader("X-Forwarded-For");
+        if (value == null) {
+            return request.getRemoteHost();
+        }
+        return value;
+    }
+
 }
