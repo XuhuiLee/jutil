@@ -33,17 +33,13 @@ public final class AntiBotUtil {
         }
 
         // 包含特殊标识
-        if (userAgent.length() < 8 || userAgent.contains("bot")) {
+        String uaLowerCase = userAgent.toLowerCase();
+        if (uaLowerCase.length() < 8 || uaLowerCase.contains("bot") || uaLowerCase.contains("spider")) {
             request.setAttribute(StringConstant.REQUEST_ATTRIBUTE_IS_BOT, true);
             return true;
         }
 
         return false;
     }
-
-
-
-
-
 
 }
