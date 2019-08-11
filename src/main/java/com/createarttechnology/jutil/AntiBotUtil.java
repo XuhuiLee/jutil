@@ -24,22 +24,35 @@ public final class AntiBotUtil {
 
         String userAgent = request.getHeader("User-Agent");
         String uri = request.getRequestURI();
+        String referer = request.getHeader("Referer");
 
         // 空ua
         boolean isAjaxRequest = uri.startsWith("/ajax/");
         if (StringUtil.isEmpty(userAgent) && !isAjaxRequest) {
-            request.setAttribute(StringConstant.REQUEST_ATTRIBUTE_IS_BOT, true);
-            return true;
+            return setBotFlag(request);
         }
 
         // 包含特殊标识
         String uaLowerCase = userAgent.toLowerCase();
         if (uaLowerCase.length() < 8 || uaLowerCase.contains("bot") || uaLowerCase.contains("spider")) {
-            request.setAttribute(StringConstant.REQUEST_ATTRIBUTE_IS_BOT, true);
-            return true;
+            return setBotFlag(request);
         }
 
+        // 无referer，还未处理特殊情况
+        if (uri.length() > 3 && StringUtil.isEmpty(referer)) {
+            return setBotFlag(request);
+        }
+
+        // 请求频率过高的
+
+        // 后续使用漏桶算法升级一下标记方法
+
         return false;
+    }
+
+    private static boolean setBotFlag(HttpServletRequest request) {
+        request.setAttribute(StringConstant.REQUEST_ATTRIBUTE_IS_BOT, true);
+        return true;
     }
 
 }
