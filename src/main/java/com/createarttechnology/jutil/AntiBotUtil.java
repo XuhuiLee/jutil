@@ -34,7 +34,7 @@ public final class AntiBotUtil {
 
         // 包含特殊标识
         String uaLowerCase = userAgent.toLowerCase();
-        if (uaLowerCase.length() < 8 || uaLowerCase.contains("bot") || uaLowerCase.contains("spider")) {
+        if (uaLowerCase.length() < 8 || uaLowerCase.contains("bot") || uaLowerCase.contains("spider") || uaLowerCase.contains("scrapy")) {
             return setBotFlag(request);
         }
 
